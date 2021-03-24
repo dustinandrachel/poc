@@ -14,7 +14,8 @@ export const ALLOWED_ACTIONS = {
     'MEMBERS': {value: 'MEMBERS', requireParam: false},
     'ADD': {value: 'ADD', requireParam: false},
     'REMOVEALL': {value: 'REMOVEALL', requireParam: false},
-    'REMOVE': {value: 'REMOVE', requireParam: false}
+    'REMOVE': {value: 'REMOVE', requireParam: false},
+    'INTERSECT': {value: 'INTERSECT', requireParam: false}
 };
 
 /**
@@ -196,6 +197,20 @@ export const removeValueFromKey = (key, value) => {
     }
     localStorage.setItem(KEY, JSON.stringify(json));
     return "Removed";
+};
+
+export const handleIntersect = (key1, key2) => {
+    if (!key1 || !key2) {
+        console.error(`Missing a key arg for intersect request, key1=${key1} key2=${key2}`);
+        return ["Please provide two keys for intersect request."];
+    }
+
+    const json = getJson();
+    const values1 = Object.values(json[key1]);
+    const values2 = Object.values(json[key2]);
+    const common = values1.filter(s => values2.indexOf(s) >= 0);
+
+    return common;
 };
 
 /**

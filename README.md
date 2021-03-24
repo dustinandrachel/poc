@@ -22,12 +22,12 @@ of the following commands to interact with the data where key = {key} and value 
 - `ITEMS` lists all of the key/values
 - `CLEAR` delets all of the key/values
 - `ALLMEMBERS` lists all of the values across all keys
-- `KEYEXISTS {key}` checks existence of the key (ex: foo)
-- `VALUEEXISTS {key value}` checks existence of the key/value (ex: foo bar) 
-- `MEMBERS {key}` lists the values for a key (ex: foo)
-- `ADD {key value}` adds the key/value (ex: foo bar)
-- `REMOVEALL {key}` removes the key and its values (ex: foo)
-- `REMOVE {key value}` removes the key/value (ex: foo bar)
+- `KEYEXISTS {key}` checks existence of the key (ex: `KEYEXISTS foo`)
+- `VALUEEXISTS {key value}` checks existence of the key/value (ex: `VALUEEXISTS foo bar`) 
+- `MEMBERS {key}` lists the values for a key (ex: `MEMBERS foo`)
+- `ADD {key value}` adds the key/value (ex: `ADD foo bar`)
+- `REMOVEALL {key}` removes the key and its values (ex: `REMOVEALL foo`)
+- `REMOVE {key value}` removes the key/value (ex: `REMOVE foo bar`)
 
 To see the dataset you can check the 'Show Data' checkbox to the right of the input textbox.
 

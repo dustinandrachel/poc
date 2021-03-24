@@ -5,7 +5,7 @@ import {
     clearAll,
     getAllMembers,
     getItems,
-    getKeys, getMembers,
+    getKeys, getMembers, handleIntersect,
     isValidAction, KEY,
     keyExists, removeAll, removeValueFromKey, valueExists
 } from "../utils/keys.utils";
@@ -26,7 +26,15 @@ const Keys = () => {
     const Display = () => {
         const sortResponse = false;
         if (sortResponse) {
-            data.sort((a, b) => String(a[0]).localeCompare(b[0]));
+            const sortDirection = 'desc';
+            data.sort((a, b) =>
+                String(sortDirection === 'asc' ? a[0] : b[0]).localeCompare(sortDirection === 'asc' ? b[0] : a[0])
+            );
+        }
+        const count = false;
+        if (count) {
+            const c = data.filter(d => d === 'bar');
+            console.log('count', c?.length);
         }
 
         return (<div>
@@ -95,6 +103,9 @@ const Keys = () => {
                     break;
                 case ALLOWED_ACTIONS.REMOVE.value:
                     responseData = [removeValueFromKey(splitSearchValue[1], splitSearchValue[2])];
+                    break;
+                case ALLOWED_ACTIONS.INTERSECT.value:
+                    responseData = [handleIntersect(splitSearchValue[1], splitSearchValue[2])];
                     break;
                 default:
                     responseData = ["NOT IMPLEMENTED"]
